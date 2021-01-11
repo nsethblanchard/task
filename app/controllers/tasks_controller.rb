@@ -2,6 +2,7 @@ class TasksController < ApplicationController
 
   # GET: /tasks
   get "/tasks" do
+    @tasks = Task.all
     erb :"/tasks/index.html"
   end
 
