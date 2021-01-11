@@ -6,12 +6,14 @@ class UsersController < ApplicationController
   end
 
   # GET: /users/new
-  get "/users/new" do
-    erb :"/users/new.html"
+  get "/signup" do
+    erb :"/users/signup.html"
   end
 
   # POST: /users
   post "/users" do
+    @user = User.create(name: params[:name], email: params[:email], password: params[:password])
+    session[:user_id] = @user.id #this line is the line that logs the user in
     redirect "/users"
   end
 
