@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       
       # flash[:message] = "User already exists. Please login to see your tasks."
       redirect to "/login"
-    elsif params[:name] != "" && params[:email] != "" && params[:password] != ""
+    elsif params[:name] != nil && params[:email] != nil && params[:password] != nil
         @user = User.create(name: params[:name], email: params[:email], password: params[:password])
         session[:user_id] = @user.id #this line is the line that logs the user in
         redirect "/tasks"

@@ -2,11 +2,11 @@
 
 <h1>Welcome to your Curated Task Hammer List, <%= current_user.name%>!</h1>
 
-<% if @tasks == nil %>
+<% if @tasks == [] || @tasks == nil %>
     <br>
 
     </br>
-    <h2>You are have Hammered all of your tasks! Congrats!</h2>
+    <h2>You have Hammered all of your tasks! Congrats!</h2>
 <% else %>
     <% @tasks.each do |task| %>
         <h2>Task Type: <%=task.task_type%></h2>
