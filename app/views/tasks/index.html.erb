@@ -11,9 +11,12 @@
     <% @tasks.each do |task| %>
         <h2>Task Type: <%=task.task_type%></h2>
         <h3>Description: <%=task.task_name%>- <%=task.task_content%> </h3>
-    
-        <p><%=task.completed%></p>
-        <p>Due By:<%=task.date_due%></p>
+        <p>Due By: <%=task.date_due%></p>
+        <%if task.completed == false%>
+            <p><%= "Still needs Hammering" %></p>
+        <%else%>
+            <p><%= "This Task has been Hammered!" %></p>
+        <%end%>
     <% end %>
 <% end %>
 
