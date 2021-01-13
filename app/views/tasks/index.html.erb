@@ -1,1 +1,9 @@
 <h1>This is the Task's index page.</h1>
+
+<% @tasks.each do |task| %>
+    <p><%=task.task_name%></p>
+    <p><%=task.task_type%></p>
+    <p><%=task.task_content%></p>
+    <p><%=task.completed%></p>
+    <p><%=task.date_due%></p>
+<% end %>
