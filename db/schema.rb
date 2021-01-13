@@ -17,10 +17,11 @@ ActiveRecord::Schema.define(version: 20210111120914) do
     t.string   "task_name"
     t.string   "task_type"
     t.string   "task_content"
-    t.string   "date_due"
+    t.boolean  "completed",    default: false
+    t.datetime "date_due"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "users", force: :cascade do |t|

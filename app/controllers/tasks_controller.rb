@@ -2,8 +2,12 @@ class TasksController < ApplicationController
 
   # GET: /tasks
   get "/tasks" do
-    @tasks = Task.all
-    erb :"/tasks/index.html"
+    if logged_in?
+      @tasks = Task.all
+      erb :"/tasks/index.html"
+    else
+      redirect "/login"
+    end
   end
 
   # GET: /tasks/new

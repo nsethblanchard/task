@@ -23,8 +23,7 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = @user.id
       redirect "/tasks"
     else
-      redirect '/signup'
-      # we need to redirect to '/error' or '/login' or something
+      redirect '/signup'  
     end
   end
 
@@ -34,7 +33,6 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
-
     def logged_in?
       !!current_user
     end

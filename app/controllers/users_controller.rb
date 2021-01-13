@@ -12,22 +12,25 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
-    @user = User.find_by(email: params[:email])
-    if @user
-      flash[:message] = "User already exists. Please login to see your tasks."
-      redirect to "/login"
-    else
-      @user = User.new(name: params[:name], email: params[:email], password: params[:password])
-        if @user.save
-          session[:user_id] = @user.id #this line is the line that logs the user in
-          redirect "/users"
-        end
-    end
+    
+      @user = User.find_by(email: params[:email])
+      if @user
+        # flash[:message] = "User already exists. Please login to see your tasks."
+        redirect to "/login"
+      else
+        @user = User.new(name: params[:name], email: params[:email], password: params[:password])
+          if @user.save
+            session[:user_id] = @user.id #this line is the line that logs the user in
+            redirect "/tasks"
+          end
+      end
   end
 
   # GET: /users/5
   get "/users/:id" do
-    erb :"/users/show.html"
+    @user = User.find()
+    
+    erb :'/users/show'
   end
 
   # GET: /users/5/edit
