@@ -3,8 +3,7 @@ class TasksController < ApplicationController
   # GET: /tasks
   get "/tasks" do
     if logged_in?
-      @user = current_user
-      @tasks = Task.all
+      @tasks = Task.find_by(id: session[:user_id])
       erb :"/tasks/index.html"
     else
       redirect "/login"
