@@ -3,9 +3,12 @@
 <h1>Welcome to your Curated Task Hammer List, <%= current_user.name%>!</h1>
 
 <% @tasks.each do |task| %>
-    <h2><%=task.task_name%></h2>
-    <p><%=task.task_type%></p>
-    <p><%=task.task_content%></p>
+    <h2>Task Type: <%=task.task_type%></h2>
+    <h3>Description: <%=task.task_name%>- <%=task.task_content%> </h3>
+    
     <p><%=task.completed%></p>
-    <p><%=task.date_due%></p>
+    <p>Due By:<%=task.date_due%></p>
 <% end %>
+
+
+#Drop the Hammer button for when you complete a task
