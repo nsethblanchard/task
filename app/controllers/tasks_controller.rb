@@ -12,12 +12,20 @@ class TasksController < ApplicationController
 
   # GET: /tasks/new
   get "/tasks/new" do
-    erb :"/tasks/new.html"
+    if logged_in?
+      erb :"/tasks/new.html"
+    end
   end
 
   # POST: /tasks
   post "/tasks" do
-    redirect "/tasks"
+    if params[:task_name] != nil && params[:task_type] != nil && params[:task_content] != nil && params[:date_due] != nil
+      @task = Task.create(task_name: params[:task_name], task_type: params[:task_type], task_content: params[:task_content], date_due: params[:date_due], user_id: session[:user_id])
+      binding.pry
+      redirect "/tasks"
+    else 
+      redirect "/tasks/new"
+    end
   end
 
   # GET: /tasks/5

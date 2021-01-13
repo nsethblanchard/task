@@ -1,1 +1,29 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h1>Create Your New Task so that you can Hammer it!</h1>
+<p>Please make sure to enter a value for all text fields or your task will not save</p>
+
+
+
+<form action="/tasks" method="POST">
+    
+    
+    <label for "task_name"> Enter Name of Task: </label>
+    <input type="text" id="task_name">
+    <br>
+    <br>
+    <label for "task_type"> Enter Type of Task: </label>
+    <input type="text" id="task_type">
+    <br>
+    <br>
+    <label for "task_content"> Brief Description of your Task: </label>
+    <input type="text" id="task_content">
+    <br>
+    <br>
+    <label for "date_due"> Date of completion(YYYY-MM-DD): </label>
+    <input type="text" id="date_due">
+    <br>
+    <br>
+    
+    
+    <input type="submit" value="Create your New Task">
+
+</form>
