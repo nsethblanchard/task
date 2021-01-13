@@ -1,7 +1,9 @@
-<h1>This is the Task's index page.</h1>
+
+
+<h1>Welcome to your Curated Task Hammer List, <%= current_user.name%>!</h1>
 
 <% @tasks.each do |task| %>
-    <p><%=task.task_name%></p>
+    <h2><%=task.task_name%></h2>
     <p><%=task.task_type%></p>
     <p><%=task.task_content%></p>
     <p><%=task.completed%></p>

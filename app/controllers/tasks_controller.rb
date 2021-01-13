@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   # GET: /tasks
   get "/tasks" do
     if logged_in?
+      @user = current_user
       @tasks = Task.all
       erb :"/tasks/index.html"
     else
