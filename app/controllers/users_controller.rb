@@ -14,9 +14,10 @@ class UsersController < ApplicationController
   post "/users" do
     @user = User.find_by(email: params[:email])
     if @user
+      binding.pry
       # flash[:message] = "User already exists. Please login to see your tasks."
       redirect to "/login"
-    elsif params[:name] != "" || params[:email] != "" || params[:password] != ""
+    elsif params[:name] != "" && params[:email] != "" && params[:password] != ""
         @user = User.create(name: params[:name], email: params[:email], password: params[:password])
         session[:user_id] = @user.id #this line is the line that logs the user in
         redirect "/tasks"
