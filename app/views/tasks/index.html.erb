@@ -1,6 +1,7 @@
 
 
-<h1>Welcome to your Curated Task Hammer List, <%= current_user.name%>!</h1>
+<h1>Welcome, <%= current_user.name %> </h1>
+<h2>to your Curated Task Hammer List !</h2>
 
 <% if @tasks == [] || @tasks == nil %>
     <br>
@@ -9,15 +10,16 @@
     <h2>You have Hammered all of your tasks! Congrats!</h2>
 <% else %>
     <% @tasks.each do |task| %>
-        <h2>Task Type: <%=task.task_type%></h2>
-        <h3>Description: <%=task.task_name%>- <%=task.task_content%> </h3>
-        <p>Due By: <%=task.date_due%></p>
+        <h4>Task Type: <%= task.task_type%></h4>
+        <h4>Description: <%= task.task_name%>- <%=task.task_content%> </h4>
+        <h4> Update This Task <a href="/tasks/#{current_user.id}" value="Show Page"></h4>
         <%if task.completed == false%>
-            <p><%= "Still needs Hammering" %></p>
+            <p>Have you completed this task yet? <%="Still needs Hammering" %> </p>                        
         <%else%>
             <p><%= "This Task has been Hammered!" %></p>
         <%end%>
     <% end %>
+        
 <% end %>
 
 <a href="/tasks/new" class="button1">Create a New Task</a>

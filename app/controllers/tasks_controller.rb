@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   # GET: /tasks
   get "/tasks" do
     if logged_in?
-      @tasks = Task.where(user_id: session[:user_id])
+      @tasks = current_user.tasks
       
       erb :"/tasks/index.html"
     else
@@ -20,9 +20,11 @@ class TasksController < ApplicationController
 
   # POST: /tasks
   post "/tasks" do
-    if params[:task_name] != nil && params[:task_type] != nil && params[:task_content] != nil && params[:date_due] != nil
-      @task = Task.create(task_name: params[:task_name], task_type: params[:task_type], task_content: params[:task_content], date_due: params[:date_due], user_id: session[:user_id])
-      
+    if params[:task_name] != nil && params[:task_type] != nil && params[:task_content] != nil 
+      @task = current_user.tasks.build(task_name: params[:task_name], task_type: params[:task_type], task_content: params[:task_content], date_due: params[:date_due])
+      @task.save
+      # @task = Task.create(task_name: params[:task_name], task_type: params[:task_type], task_content: params[:task_content], date_due: params[:date_due], user_id: current_user.id)
+      binding.pry
       redirect "/tasks"
     else 
       redirect "/tasks/new"
