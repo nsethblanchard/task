@@ -5,7 +5,10 @@
 <p>Specifics about this task: <%= @task.task_content %></p>
 
 
-<form action="/tasks/<%=@task.id %>" method="post">
+<form action="/tasks/<%=@task.id%>/delete" method="post">
+  
+
   <input type="hidden" id="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Task?">
 </form>
+

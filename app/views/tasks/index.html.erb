@@ -5,18 +5,16 @@
 
 <% if @tasks == [] || @tasks == nil %>
     <br>
-
     </br>
-    <h2>You have Hammered all of your tasks! Congrats!</h2>
-<% else %>
+    <h3>You have Hammered all of your tasks! Congrats!</h3>
+<%else%>
+    <%if task.completed == false %>
     <% @tasks.each do |task| %>
         <h4>Task Type: <%= task.task_type%></h4>
         <h4>Description: <%= task.task_name%>- <%=task.task_content%> </h4>
-        <%if task.completed == false%>
-            <p>Have you completed this task yet? <%="Still needs Hammering" %> </p>                        
-        <%else%>
-            <p><%= "This Task has been Hammered!" %></p>
-        <%end%>
+        <p>This task still needs hammering!</p> 
+    <%end%>                          
+<%end%>
         <a href="/tasks/<%=task.id%>" class="button1">Update Task</a>
     <% end %>       
 <% end %>
