@@ -44,12 +44,10 @@ class TasksController < ApplicationController
 
   # GET: /tasks/5/edit
   get "/tasks/:id/edit" do
-      not_logged_in?
-      if @task = current_user.tasks.find_by_id(params[:id])
-        erb :"/tasks/edit.html"
-      else
-        redirect "/tasks"
-      end
+    not_logged_in?
+    @task = current_user.tasks.find_by_id(params[:id])
+    erb :"/tasks/edit.html"
+      
   end
 
   # PATCH: /tasks/5
@@ -59,6 +57,8 @@ class TasksController < ApplicationController
       if !@task
         redirect "/tasks/:id"
       end
+    @task.update(task_name: params[:task_name], task_type: params[:task_type], task_content: params[:task_content])
+    redirect "/tasks"
   end
 
   # DELETE: /tasks/5/delete

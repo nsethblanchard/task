@@ -1,19 +1,21 @@
 <h1>Insert the form to edit an instance of your model here.</h1>
 
 <form action="/tasks/<%= @task.id %>" method="post">
-    <h1> Task Name:<%= @task.task_name%></h1>
+    
+    <h4> Current Task Name:<%= @task.task_name%></h4>
     <input type="text" name="task_name" id="task_name">
     
-    <h1> Task Type:<%= @task.task_type%></h1>
-    <input type="text" name="task_type" id="conttask_typeent">
+    <h4> Current Task Type:<%= @task.task_type%></h4>
+    <input type="text" name="task_type" id="task_type">
 
-    <h1> Task Content:<%= @task.task_content%></h1>
+    <h4> Current Task Content:<%= @task.task_content%></h4>
     <input type="text" name="task_content" id="task_content">
 
+    <br>
+    <br>
     
     <input id="hidden" type="hidden" name="_method" value="patch">
+    <input type="submit" value="Update Your Task">
     
-    <input type="text" >
-    <input type="submit" id="Submit" value="Update Your Task">
 
 </form>
