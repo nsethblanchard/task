@@ -3,23 +3,48 @@
 <h1>Welcome, <%= current_user.name %> </h1>
 <h2>to your Curated Task Hammer List !</h2>
 
+
+<% comptasks = [] %>
+<% tbd = [] %>
+
 <% if @tasks == [] || @tasks == nil %>
     <br>
     </br>
     <h3>You have Hammered all of your tasks! Congrats!</h3>
-<%else%>
-    <%if task.completed == false %>
+<% else %>
     <% @tasks.each do |task| %>
-        <h4>Task Type: <%= task.task_type%></h4>
-        <h4>Description: <%= task.task_name%>- <%=task.task_content%> </h4>
-        <p>This task still needs hammering!</p> 
-    <%end%>                          
-<%end%>
-        <a href="/tasks/<%=task.id%>" class="button1">Update Task</a>
-    <% end %>       
+        <% if task.completed == true %>
+            <% comptasks << task %>
+        <% else %>
+            <% tbd << task %>
+        <% end %>
+    <% end %>
+<% end %>
+
+<% tbd.each do |task| %>
+    <h4>Task Type: <%= task.task_type%></h4>
+    <h4>Description: <%= task.task_name%>- <%=task.task_content%> </h4>
+    <p><%="This task still needs hammering!" %> </p> 
+    <a href="/tasks/<%=task.id%>" class="button1">Update Task</a>
+    <a href="/tasks/<%=task.id%>/hammer" class="button1">Hammer this Task</a>
 <% end %>
 <br>
+</br>
+<br>
+</br>
+<br>
+</br>
+<% comptasks.each do |task| %>
+    <h5>Task Type: <%= task.task_type%></h5>
+    <h5>Description: <%= task.task_name%>- <%=task.task_content%> </h5>
+    <h5>You hammered this task on: <%= task.updated_at%></h5>
+    <h4><%="This Task has been Hammered!"%> </h4>
+    <a href="/tasks/<%=task.id%>" class="button1">Update Task</a>
 
+<% end %>
+
+
+<br>
 </br>
 <a href="/tasks/new" class="button1">Create a New Task</a>
 

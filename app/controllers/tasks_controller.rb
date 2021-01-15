@@ -30,8 +30,16 @@ class TasksController < ApplicationController
   # GET: /tasks/5
   get "/tasks/:id" do
     not_logged_in?
-    @task = Task.find(params[:id])
+    @task = Task.find_by_id(params[:id])
     erb :"/tasks/show.html"
+  end
+
+  get '/tasks/:id/hammer' do
+    not_logged_in?
+    @task = Task.find_by_id(params[:id])
+    @task.completed = true
+    @task.save
+    redirect "/tasks"
   end
 
   # GET: /tasks/5/edit
