@@ -14,8 +14,6 @@ class UsersController < ApplicationController
   post "/users" do
     @user = User.find_by(email: params[:email])
     if @user
-      
-      # flash[:message] = "User already exists. Please login to see your tasks."
       redirect to "/login"
     elsif params[:name] != nil && params[:email] != nil && params[:password] != nil
         @user = User.create(name: params[:name], email: params[:email], password: params[:password])
