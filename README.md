@@ -1,7 +1,7 @@
 
 Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
-#Sinatra Portfolio Project for Flatiron
+Sinatra Portfolio Project for Flatiron
 
 Welcome to Task Hammer, the application that keeps track of your to-do list.  Once signed up and logged in, a user can keep track of all of his or her upcoming tasks
 and once completed, these tasks can be marked as "hammered."  This will move them into a category of completed tasks!  A user can create, read, update, and delete any tasks.  
@@ -15,7 +15,7 @@ Install Instructions
     b. bundle install running this command installs all required gems onto the user's local environment
     c. shotgun starts up a local server so that the application can be used
 4. A user will now need to go to their browser and type in:
-    a. "localhost:9393"- this is the port utilized by shotgun and will start at the root route/welcome page.
+    . "localhost:9393"- this is the port utilized by shotgun and will start at the root route/welcome page.
 5. A user can now use the Task Hammer app to keep track of their to-do list.  Enjoy!
 
 Contributors 
